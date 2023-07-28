@@ -27,6 +27,10 @@ the same annotation on top of Scenario that you want to run.
 
 A) Yes, a html report gets generated inside target folder with name  "cucumber-html-report.html"
 
+**Q) Can I debug the server side code?**
+
+A) Yes, just run the local server in debug mode and put the breakpoints at required places,
+you will get the control when flow reaches at that point.
 
 # Troubleshooting / Pitfalls
 
