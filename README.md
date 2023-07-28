@@ -6,6 +6,11 @@ Showcase how cucumber framework can be used to write integration tests
 
 2) Install Intellij Cucumber for Java plugin - To generate stepdefs from feature files
 
+# Local Server Details
+Runs at port 8080
+http://localhost:8080/hotelapp/hotels-near-by
+
+
 # Q & A's
 **Q) How do I run the Integration Test?**
 
