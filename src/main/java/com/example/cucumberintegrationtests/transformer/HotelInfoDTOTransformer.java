@@ -9,9 +9,9 @@ import java.util.stream.Collectors;
 
 public final class HotelInfoDTOTransformer {
 
-    public static HotelsNearbyDTO transformToHotelInfoDTO(List<HotelInfo> hotelInfoList) {
+    public static HotelsNearbyDTO transformToHotelsNearbyDTO(List<HotelInfo> hotelInfoList) {
         List<HotelInfoDTO> hotelInfoDTOS = hotelInfoList.stream()
-                .map(HotelInfoDTOTransformer::transform)
+                .map(HotelInfoDTOTransformer::transformToHotelInfoDTO)
                 .collect(Collectors.toList());
 
         HotelsNearbyDTO hotelsNearbyDTO = new HotelsNearbyDTO();
@@ -20,7 +20,7 @@ public final class HotelInfoDTOTransformer {
         return hotelsNearbyDTO;
     }
 
-    private static HotelInfoDTO transform(HotelInfo hotelInfo) {
+    public static HotelInfoDTO transformToHotelInfoDTO(HotelInfo hotelInfo) {
         HotelInfoDTO hotelInfoDTO = new HotelInfoDTO();
         hotelInfoDTO.setHotelName(hotelInfo.getHotelName());
         hotelInfoDTO.setLocation(hotelInfo.getLocation());

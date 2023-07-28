@@ -4,6 +4,7 @@ import com.example.cucumberintegrationtests.domain.HotelInfo;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 import static java.util.Arrays.asList;
 
@@ -26,5 +27,13 @@ public class HotelDao {
         hotelInfo2.setStars("****");
 
         return asList(hotelInfo1, hotelInfo2);
+    }
+
+    public HotelInfo getHotelWithName(String name) {
+        List<HotelInfo> hotelsNearby = getHotelsNearby();
+        Optional<HotelInfo> hotel = hotelsNearby.stream()
+                .filter(hotelInfo -> hotelInfo.getHotelName().equals(name))
+                .findFirst();
+        return hotel.get();
     }
 }

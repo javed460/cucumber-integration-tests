@@ -15,4 +15,8 @@ public class HotelService {
     public List<HotelInfo> getHotelsNearby() {
         return hotelDao.getHotelsNearby();
     }
+
+    public HotelInfo getHotelWithName(String name) {
+        return hotelDao.getHotelWithName(name);
+    }
 }
