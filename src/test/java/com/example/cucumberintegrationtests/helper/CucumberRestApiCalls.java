@@ -1,5 +1,6 @@
 package com.example.cucumberintegrationtests.helper;
 
+import com.example.cucumberintegrationtests.dto.HotelInfoDTO;
 import com.example.cucumberintegrationtests.dto.HotelsNearbyDTO;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -25,5 +26,13 @@ public class CucumberRestApiCalls {
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         return headers;
+    }
+
+    public HotelInfoDTO getHotelInfo(String hotelName) {
+        ResponseEntity<HotelInfoDTO> response = restTemplateCucumber
+                .getForEntity(BASE_URL + "/hotel/"+hotelName, HotelInfoDTO.class);
+
+        log.info("Hotel info response={}", response);
+        return response.getBody();
     }
 }

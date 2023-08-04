@@ -1,5 +1,6 @@
 package com.example.cucumberintegrationtests.stepdefs;
 
+import com.example.cucumberintegrationtests.dto.HotelInfoDTO;
 import com.example.cucumberintegrationtests.dto.HotelsNearbyDTO;
 import com.example.cucumberintegrationtests.helper.CucumberRestApiCalls;
 import io.cucumber.java.en.Given;
@@ -14,6 +15,8 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 @Slf4j
 public class HotelSearchStepdefs {
     private HotelsNearbyDTO hotelsNearbyDTO;
+    private String hotelName;
+    private HotelInfoDTO hotelInfoDTO;
 
     @Autowired
     private CucumberRestApiCalls cucumberRestApiCalls;
@@ -32,5 +35,22 @@ public class HotelSearchStepdefs {
     @Then("I should get the list of hotels nearby")
     public void iShouldGetTheListOfHotelsNearby() {
         assertThat(hotelsNearbyDTO.getHotelInfoDTOS().size()).isGreaterThan(1);
+    }
+
+    @Given("I want to get hotel info {string}")
+    public void iWantToGetHotelInfo(String hotelName) {
+        this.hotelName = hotelName;
+    }
+
+    @When("I search for hotel")
+    public void iSearchForHotel() {
+        HotelInfoDTO hotelInfoDTO = cucumberRestApiCalls.getHotelInfo(hotelName);
+        this.hotelInfoDTO = hotelInfoDTO;
+    }
+
+    @Then("I should get the hotel info")
+    public void iShouldGetTheHotelInfo() {
+        assertThat(hotelInfoDTO.getHotelName()).isEqualTo(hotelName);
+        assertThat(hotelInfoDTO.getStars()).isEqualTo("***");
     }
 }
