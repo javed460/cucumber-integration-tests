@@ -1,5 +1,5 @@
 # cucumber-integration-tests
-Showcase how cucumber framework can be used to write integration tests
+Cucumber framework for integration tests
 
 # Prerequisites
 1) Install Intellij Gherkin plugin - for feature files
